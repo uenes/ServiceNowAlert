@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="generator"
+    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+    <title>ITSM Alert Options</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
+	<link href="css/options.css" rel="stylesheet" media="screen" />
+  </head>
+  <body>
+  <div class="alert alert-success" id="status"></div>
+  
+  <div class="settings">
+  <fieldset>
+  <legend>Settings</legend> 
+		<label>URL root of your ServiceNow</label> 
+		<input id="idrooturl" type="text" class="input-xlarge" placeholder="https://aomev.service-now.com" />
+		<b><i>OR</i></b><br/>
+		Paste the ServiceNow URL you want to follow
+		<input id="idunacceptedcalls" type="text" class="input-block-level" placeholder="https://aomev.service-now.com/incident_list.do?sysparm_userpref_module=3357969fa14c71001d242169f15e70ac&sysparm_query=incident_st..." />
+		
+		<br/><br/>
+		<label>Follow a specific URL search of ITSM</label> 
+		<input id="idurl" type="text" class="input-block-level" placeholder="URL to be verified.." />
+		<label class="checkbox">
+			<input id="searchpage" class="check" type="checkbox"> Turn off Search Page verification
+		</label>
+		<br/>
+		<br/>
+		<button class="btn btn-success" id="save">Save</button>
+  </fieldset>
+  </div>
+  
+  <!--<button class="btn btn-success" id="clear">Clear</button></fieldset>-->
+  
+  <script src="js/jquery.js"></script> 
+  <script src="js/bootstrap.min.js"></script></body>
+  <script src="js/options.js"></script> 
+</html>

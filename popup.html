@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <title>ITSM Alert</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
+	<link href="css/popup.css" rel="stylesheet" media="screen" />
+  </head>
+  <body>
+	<div class="popup" >
+	<div id="status" class="alert alert-success"></div>
+	
+	<fieldset>
+		<legend>Create</legend> 
+		<div class="input-append">
+			<button class="btn btn-primary" id="newticket">Incident</button>
+			<button class="btn btn-primary" id="newproblem">Problem</button>
+			<button class="btn btn-primary" id="newcr">CR</button>
+			<button class="btn btn-primary" id="newios">IOS</button>
+		</div>
+	</fieldset>
+	</br>
+	<fieldset>
+		<legend>Search</legend> 
+		<div class="input-append">
+			<input class="span2" id="searchinput" type="text">
+			<button class="btn btn-primary" type="button" id="idsearch">Go!</button>
+		</div>
+	</fieldset>
+	</br>
+	<fieldset>
+		<legend>Options</legend> 
+		Follow just group</br>
+		<div class="input-append">
+		  <input class="span2" type="text" placeholder="Group" id="groupname">
+		  <button class="btn btn-primary" id="save">Save</button>
+		</div>
+		<label class="checkbox">
+		  <input id="allgroups" class="check" type="checkbox"> All Groups
+		</label>
+	</fieldset>
+	</br>
+	<fieldset>
+		<legend>Lists</legend> 
+		<button class="btn btn-block btn-primary" type="button" id="idunacceptedbutton">Unaccepted Tickets</button>
+		<button class="btn btn-block btn-primary" type="button" id="idacceptedbutton">Accepted by Me</button>
+	</fieldset>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/popup.js"></script>
+	<script src="js/bootstrap.min.js"></script> 
+  </body>
+</html>
+
