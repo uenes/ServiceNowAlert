@@ -12,6 +12,15 @@ function save_options() {
 	var rooturl = $("#idrooturl").val()
 	var searchunacceptedurl = $("#idunacceptedcalls").val()
 	
+	var $followWorkflow
+	if($("#followWorkflow").is(":checked")) {
+		$followWorkflow = true
+	} else {
+		$followWorkflow = false
+	}
+	
+	console.log("followWorkflow ", $followWorkflow)
+	
 	if (isEmpty(rooturl) && isEmpty(searchunacceptedurl) ) {
 		rooturl = "https://aomev.service-now.com"
 	} else if (!(isEmpty(searchunacceptedurl)) )  {
@@ -21,7 +30,8 @@ function save_options() {
 	chrome.storage.sync.set({
 		'specificURL' : url,
 		'rootURL' : rooturl,
-		'searchunacceptedurl' : searchunacceptedurl
+		'searchunacceptedurl' : searchunacceptedurl,
+		'followWorkflow' : $followWorkflow
 	}, function () {
 		showSuccessMessage("Options saved!")
 	});
@@ -69,7 +79,7 @@ function clear_options() {
 }
 
 function restore_options() {
-	chrome.storage.sync.get(['specificURL','rootURL','searchunacceptedurl'], function (items) {
+	chrome.storage.sync.get(['specificURL','rootURL','searchunacceptedurl','followWorkflow'], function (items) {
 		$("#idunacceptedcalls").val(items.searchunacceptedurl);
 		$("#idurl").val(items.specificURL);
 		if (items.rootURL != undefined) {
@@ -84,6 +94,13 @@ function restore_options() {
 			$("#idunacceptedcalls").prop('readonly', false);
 			$("#idrooturl").prop('readonly', true);
 		}
+		if (items.followWorkflow != undefined) {
+			console.log("items.followWorkflow RECOVER", items.followWorkflow)
+			$("#followWorkflow").prop("checked", items.followWorkflow);
+		} else {
+			$("#followWorkflow").prop("checked", false);
+			console.log("UNDEFINED")
+		}
 	});
 }
 
@@ -93,6 +110,15 @@ $(document).ready(function() {
 	
 	$("#searchpage").change(function() {
 		var notifications
+		if($(this).is(":checked")) {
+			$("#idurl").val("")
+			$("#idurl").prop('disabled', true);
+		} else {
+			$("#idurl").prop('disabled', false);
+		}
+	}); 
+	
+	$("#followWorkflow").change(function() {
 		if($(this).is(":checked")) {
 			$("#idurl").val("")
 			$("#idurl").prop('disabled', true);

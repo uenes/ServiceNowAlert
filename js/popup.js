@@ -41,6 +41,10 @@ $(document).ready(function() {
 		chrome.tabs.create({active: true, url: $rootURL + "/incident_list.do?sysparm_userpref_module=3357969fa14c71001d242169f15e70ac&sysparm_query=incident_state=3^assignment_group=javascript:gs.getUser().getMyGroups();^EQ"});
 	})
 	
+	$("#idunacceptedworkflowbutton").click(function (){
+		chrome.tabs.create({active: true, url: $rootURL + "/u_inc_wftask_list.do?sysparm_query=iwt_u_assigned_group%3Djavascript%3AgetMyGroupsAdvanced2(4)%5Eiwt_u_assigned_group%3Dd2c17b14e9082d007e9753d310d3051b%5Eiwt_u_task_status%3D1%5EORDERBYinc_u_updated_by_customer&sysparm_view="});
+	})
+	
 	$("#idacceptedbutton").click(function (){
 		chrome.tabs.create({active: true, url: $rootURL + "/incident_list.do?sysparm_userpref_module=e0d40a1fa14c71001d242169f15e70d2&sysparm_query=active=true^incident_stateNOT%20IN6,7^u_accepted_by=javascript:gs.getUserID();^EQ"});
 	})
